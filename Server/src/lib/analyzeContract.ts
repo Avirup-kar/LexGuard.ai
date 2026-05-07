@@ -64,6 +64,7 @@ Just raw JSON in this exact structure:
 }
 
 Rules:
+- Analyze ONLY from the contractor's perspective — identify risks and protections for the contractor, not the client's perspective
 - id must be sequential starting from 1
 - riskLevel must be exactly: "safe", "medium", or "danger"
 - if riskLevel is "safe" then consequence and solution must be null but plainEnglish should not be null
