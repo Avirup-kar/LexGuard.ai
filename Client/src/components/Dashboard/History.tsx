@@ -27,36 +27,36 @@ export default function ContractHistory() {
     },
   };
 
-  const historyy = [
-    {
-      id: 1,
-      contractTitle: "Freelance Web Dev Agreement",
-      overallRisk: "high",
-      overallSummary:
-        "This contract heavily favors the client and exposes the contractor to unlimited liability.",
-    },
-    {
-      id: 2,
-      contractTitle: "UI Design Contract",
-      overallRisk: "medium",
-      overallSummary:
-        "Most clauses are fair, but payment timelines and revision limits may need clarification.",
-    },
-    {
-      id: 3,
-      contractTitle: "Consulting Agreement",
-      overallRisk: "safe",
-      overallSummary:
-        "The agreement is balanced with clear payment terms and reasonable liability limits.",
-    },
-    {
-      id: 4,
-      contractTitle: "Startup NDA",
-      overallRisk: "high",
-      overallSummary:
-        "The NDA has extremely strict confidentiality clauses that could restrict future work.",
-    },
-  ];
+  // const historyy = [
+  //   {
+  //     id: 1,
+  //     contractTitle: "Freelance Web Dev Agreement",
+  //     overallRisk: "high",
+  //     overallSummary:
+  //       "This contract heavily favors the client and exposes the contractor to unlimited liability.",
+  //   },
+  //   {
+  //     id: 2,
+  //     contractTitle: "UI Design Contract",
+  //     overallRisk: "medium",
+  //     overallSummary:
+  //       "Most clauses are fair, but payment timelines and revision limits may need clarification.",
+  //   },
+  //   {
+  //     id: 3,
+  //     contractTitle: "Consulting Agreement",
+  //     overallRisk: "safe",
+  //     overallSummary:
+  //       "The agreement is balanced with clear payment terms and reasonable liability limits.",
+  //   },
+  //   {
+  //     id: 4,
+  //     contractTitle: "Startup NDA",
+  //     overallRisk: "high",
+  //     overallSummary:
+  //       "The NDA has extremely strict confidentiality clauses that could restrict future work.",
+  //   },
+  // ];
 
   const getHistory = async () => {
     try {
@@ -101,7 +101,7 @@ export default function ContractHistory() {
               <button
                 onClick={() => navigate(`/project/${contract?.id}`)}
                 key={contract.id}
-                className={`p-4 rounded-lg border ${style?.border} ${style?.bg} cursor-pointer flex flex-col items-start hover:scale-[1.02] transition`}
+                className={`p-4 rounded-lg border-l-[6px] border ${style?.border} ${style?.bg} cursor-pointer flex flex-col items-start hover:scale-[1.02] transition`}
               >
                 {/* Top Row */}
                 <div className="flex justify-between items-center w-full mb-2">
@@ -116,7 +116,7 @@ export default function ContractHistory() {
 
                 {/* Summary */}
                 <div>
-                  <p className="text-xs text-gray-300 leading-relaxed">
+                  <p className="text-xs text-gray-300 text-start leading-relaxed">
                     {contract?.contractData?.overallSummary}
                   </p>
                 </div>

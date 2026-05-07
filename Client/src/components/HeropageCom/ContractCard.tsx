@@ -17,7 +17,7 @@ const ContractCard = () => (
       <div className="flex items-center justify-between px-5 py-3.5 border-b border-subtle">
         <div className="flex items-center gap-2.5">
           <FileText className="h-4 w-4 text-[#EF4444]" />
-          <span className="text-sm font-medium text-foreground">freelance-agreement.pdf</span>
+          <span className="text-sm font-medium text-foreground">freelance-agreement</span>
         </div>
         <span className="text-[10px] font-bold px-2.5 py-1 rounded-md bg-[#EF4444]/15 text-[#EF4444] uppercase tracking-wider">High Risk</span>
       </div>
