@@ -9,7 +9,7 @@ An AI-powered legal contract analysis tool that helps users understand contracts
 - **Plain English Explanations**: Convert complex legal jargon into understandable terms
 - **Risk Identification**: Highlight dangerous clauses and potential issues
 - **Email Generation**: Automatically generate professional emails related to contracts
-- **Live Translation**: Translate contract image text to Hindi and Bengali in real time
+- **Live Translation**: Translate contract summaries to Hindi and Bengali in real time
 - **Expert Search**: Find relevant legal experts based on contract type
 - **User Dashboard**: Track analysis history and manage projects
 - **Authentication**: Secure user authentication via Clerk
@@ -89,14 +89,23 @@ An AI-powered legal contract analysis tool that helps users understand contracts
    VITE_BASEURL=http://localhost:3000
    ```
 
-4. **Database Setup**
+4. ** Start the translation service**
+
+   Run a LibreTranslate Docker image so the backend can call the translation API at `http://localhost:5000/translate`.
+
+   ```bash
+   docker pull libretranslate/libretranslate:latest
+   docker run -d --name libretranslate -p 5000:5000 libretranslate/libretranslate:latest
+   ```
+
+5. **Database Setup**
    ```bash
    cd Server
    npx prisma migrate dev
    npx prisma generate
    ```
 
-5. **Start the application**
+6. **Start the application**
 
    **Terminal 1 - Server:**
    ```bash
