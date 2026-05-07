@@ -75,10 +75,13 @@ OUTPUT FORMAT:
     const jsonMatch = content?.match(/\{[\s\S]*\}/);
     const jsonString = jsonMatch ? jsonMatch[0] : content;
 
-    const emailData = JSON.parse(jsonString!);
+    const cleanJson = jsonString!
+    .replace(/[\x00-\x09\x0B\x0C\x0E-\x1F\x7F]/g, " ") // removes bad chars but keeps \n and \r
+    .trim();
 
+    const emailData = JSON.parse(cleanJson);
+    
     return emailData;
-
   } catch (error: any) {
     console.log(error.status);
     console.log(error.message);
