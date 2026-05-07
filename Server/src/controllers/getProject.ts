@@ -70,8 +70,6 @@ export async function getProject(req: Request, res: Response) {
         });
       }
 
-      console.log("📁 Project fetched:", project.expertData);
-
        res.status(200).json({ success: true,  project });
   } catch (error: any) {
       return res.status(500).json({
