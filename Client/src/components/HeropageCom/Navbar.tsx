@@ -1,7 +1,7 @@
 import { useState, useEffect } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import { Shield, Menu, X, ArrowRight } from "lucide-react";
-import { Show, useClerk, UserButton, } from "@clerk/react";
+import { Show, useClerk, UserButton } from "@clerk/react";
 
 const navLinks = [
   { label: "Home", href: "#hero" },
