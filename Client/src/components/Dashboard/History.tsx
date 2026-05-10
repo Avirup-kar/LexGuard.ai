@@ -115,9 +115,19 @@ export default function ContractHistory() {
                 </div>
 
                 {/* Summary */}
-                <div>
+                {/* Summary */}
+                <div className="flex flex-col md:flex-row items-center justify-between w-full">
                   <p className="text-xs text-gray-300 text-start leading-relaxed">
                     {contract?.contractData?.overallSummary}
+                  </p>
+                  <p className="text-xs text-gray-500 text-start mt-1">
+                    {contract?.createdAt
+                      ? new Date(contract.createdAt).toLocaleDateString([], {
+                          day: "2-digit",
+                          month: "short",
+                          year: "numeric",
+                        })
+                      : ""}
                   </p>
                 </div>
               </button>

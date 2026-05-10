@@ -19,7 +19,8 @@ export async function getProjectHistory(req: Request, res: Response){
             },
             select: {
               id: true,
-              contractData: true
+              contractData: true,
+              createdAt: true
             }
          });
 
