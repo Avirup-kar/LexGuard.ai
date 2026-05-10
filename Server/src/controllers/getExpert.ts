@@ -12,8 +12,6 @@ export async function searchExpertsController(req: Request, res: Response) {
       return res.json({ success: false, message: "unauthorised login first." });
     }
 
-    console.log("🔍 searchExpertsController called with projectId:", projectId);
-
     const contractData = await prisma.project.findFirst({
         where: {
           id: projectId as string,
@@ -25,8 +23,6 @@ export async function searchExpertsController(req: Request, res: Response) {
     });
 
     const experts = await searchExperts(contractData?.contractData);
-
-    console.log("✅ Experts extracted:", experts);
 
     const addExpert = await prisma.project.update({
           where: {

@@ -25,8 +25,6 @@ export async function searchExperts(contractData: any) {
 
     const rawItems = serpData.organic_results.slice(0, 5);
 
-    console.log("🔍 Search Results:", rawItems);
-
     const prompt = `
 You are a data extraction API.
 Extract contact details from the given search results.
