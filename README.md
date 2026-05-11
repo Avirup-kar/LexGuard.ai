@@ -78,9 +78,9 @@ An AI-powered legal contract analysis tool that helps users understand contracts
    CLERK_SECRET_KEY=your_clerk_secret_key
    GROQ_API_KEY=your_GROQ_ai_api_key
    SERPAPI_KEY=your_serpapi_key
-   CLOUDINARY_NAME=your_cloudinary_name
+   CLOUDINARY_CLOUD_NAME=your_cloudinary_name
    CLOUDINARY_API_KEY=your_cloudinary_api_key
-   CLOUDINARY_SECRET_KEY=your_cloudinary_secret_key
+   CLOUDINARY_API_SECRET=your_cloudinary_secret_key
    ```
 
    **Client/.env:**
