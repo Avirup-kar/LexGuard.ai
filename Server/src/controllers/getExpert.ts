@@ -9,7 +9,7 @@ export async function searchExpertsController(req: Request, res: Response) {
     const { projectId } = req.body;
 
     if (!userId) {
-      return res.json({ success: false, message: "unauthorised login first." });
+      return res.json({ success: false, message: "User unauthorised to access." });
     }
 
     const contractData = await prisma.project.findFirst({
