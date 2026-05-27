@@ -47,8 +47,8 @@ export async function getProject(req: Request, res: Response) {
       if(!projectId && !userId) {
         return res.status(404).json({
          success: false,
-         message: "projectId & userId needed"
-        });
+         message: "ProjectId & userId needed( Unauthorised user )"
+        }); 
       }
 
       const project = await prisma.project.findFirst({
