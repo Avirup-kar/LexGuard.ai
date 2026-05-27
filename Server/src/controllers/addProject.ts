@@ -18,7 +18,7 @@ export async function addproject(req: Request, res: Response) {
     if (!userId) {
       return res.status(401).json({
         success: false,
-        message: "User unauthorised login first.",
+        message: "User unauthorised to access.",
       });
     }
 
@@ -82,7 +82,7 @@ export async function createEmail(req: Request, res: Response) {
     if (!userId) {
       return res.status(401).json({
         success: false,
-        message: "User unauthorised login first.",
+        message: "User unauthorised to access.",
       });
     }
 
