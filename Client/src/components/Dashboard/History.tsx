@@ -115,7 +115,6 @@ export default function ContractHistory() {
                 </div>
 
                 {/* Summary */}
-                {/* Summary */}
                 <div className="flex flex-col md:flex-row items-center justify-between w-full">
                   <p className="text-xs text-gray-300 text-start leading-relaxed">
                     {contract?.contractData?.overallSummary}
