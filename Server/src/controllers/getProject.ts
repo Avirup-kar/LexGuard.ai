@@ -9,7 +9,7 @@ export async function getProjectHistory(req: Request, res: Response){
         const { userId } = getAuth(req);
 
          if(!userId) {
-           return res.json({ success: false, message: "unauthorised login first." });
+           return res.json({ success: false, message: "User unauthorised to access." });
          }
 
          const project = await prisma.project.findMany({
