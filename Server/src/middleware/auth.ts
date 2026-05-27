@@ -5,7 +5,7 @@ export const auth = async (req: Request, res: Response, next: NextFunction) => {
     try {
         const { userId } = getAuth(req);
         if(!userId) {
-          return res.json({ success: false, message: "User unauthorised login first." });
+          return res.json({ success: false, message: "User unauthorised to access." });
         }
 
         next();
