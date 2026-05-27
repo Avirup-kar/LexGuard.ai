@@ -36,7 +36,7 @@ const Translate = async (req: Request, res: Response) => {
     const { clause, lang } = req.body;
 
     if (!userId) {
-      return res.json({ success: false, message: "unauthorised login first." });
+      return res.json({ success: false, message: "User unauthorised to access." });
     }
 
     if (!clause || !lang) {
