@@ -11,9 +11,9 @@ import { createRowEmail } from "../lib/createEmail.js";
 
 export async function addproject(req: Request, res: Response) {
   try {
+    console.log("addproject called");
     const { userId } = getAuth(req);
     const image = req.file;
-
 
     if (!userId) {
       return res.status(401).json({
@@ -29,8 +29,13 @@ export async function addproject(req: Request, res: Response) {
       });
     }
 
+    console.log("Converting image buffer to base64...");
     const base64Image = `data:${image.mimetype};base64,${image.buffer.toString("base64")}`;
+    console.log("Image converted to base64 successfully");
+
+    console.log("Uploading image to Cloudinary...");
     const imageUrl = await cloudinary.uploader.upload(base64Image);
+    console.log("Image uploaded to Cloudinary successfully:", imageUrl.secure_url);
 
     const createProject = await prisma.project.create({
       data: {
@@ -40,11 +45,11 @@ export async function addproject(req: Request, res: Response) {
     });
 
     console.log("comming")
-  // ✅ Clean image for better OCR
-  const cleanImage = await sharp(image.buffer)
-  .resize({ width: 1000, withoutEnlargement: true })
-  .normalize() // 🔥 better than grayscale sometimes
-  .toBuffer();
+    // ✅ Clean image for better OCR
+    const cleanImage = await sharp(image.buffer)
+      .resize({ width: 1000, withoutEnlargement: true })
+      .normalize() // 🔥 better than grayscale sometimes
+      .toBuffer();
 
     const result = await Tesseract.recognize(cleanImage, "eng");
 
@@ -52,7 +57,7 @@ export async function addproject(req: Request, res: Response) {
 
     const contractData = await analyzeContractImage(extractedText);
 
-     await prisma.project.update({
+    await prisma.project.update({
       where: { id: createProject.id },
       data: {
         contractData: JSON.parse(JSON.stringify(contractData)),
@@ -87,28 +92,28 @@ export async function createEmail(req: Request, res: Response) {
     }
 
     const projectContractData = await prisma.project.findFirst({
-        where: {
-          id: projectId as string,
-          userId: userId as string
-        },
-        select: {
-          contractData: true, 
-        }
-      })
-      
-      const rowEmail = await createRowEmail(projectContractData);
+      where: {
+        id: projectId as string,
+        userId: userId as string
+      },
+      select: {
+        contractData: true,
+      }
+    })
 
-      const addEmail = await prisma.project.update({
-         where: {
-          id: projectId as string,
-          userId: userId as string
-        },
-        data: {
-          email: rowEmail,
-        },
-       });
+    const rowEmail = await createRowEmail(projectContractData);
 
-      return res.json({
+    const addEmail = await prisma.project.update({
+      where: {
+        id: projectId as string,
+        userId: userId as string
+      },
+      data: {
+        email: rowEmail,
+      },
+    });
+
+    return res.json({
       success: true,
       email: addEmail.email,
     });
